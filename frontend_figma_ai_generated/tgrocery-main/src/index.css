@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Design tokens pulled from the Figma file (Thai's Grocery / Fresh modern market) */
+@theme {
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #183529; /* primary text, brand wordmark */
+  --color-brand: #267343; /* buttons, links, eyebrow labels, footer */
+  --color-brand-dark: #1d5c35; /* hover state for brand surfaces */
+  --color-mint: #f2f7f1; /* announcement bar, badges, tinted sections */
+  --color-muted: #627368; /* secondary copy */
+  --color-placeholder: #697066;
+  --color-line: #e1e3db; /* card borders */
+  --color-line-input: #d8ded5; /* search field border */
+  --color-line-nav: #daddd3; /* fulfillment bar rules */
+
+  --tracking-display: -1.2px;
+  --tracking-eyebrow: 1.8px;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-white font-sans text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Shared horizontal gutter: 20px mobile → 32px tablet → 64px desktop (Figma) */
+@utility gutter {
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 4rem;
+  }
+}
